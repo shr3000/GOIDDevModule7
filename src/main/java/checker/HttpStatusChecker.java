@@ -6,7 +6,7 @@ import java.net.URL;
 
 public class HttpStatusChecker {
 
-    public String getStatusImage(int code) throws Exception {
+    public String getStatusImage(int code) {
         String url = "https://http.cat/" + code + ".jpg";
         HttpURLConnection connection = null;
 
@@ -14,12 +14,12 @@ public class HttpStatusChecker {
             connection = (HttpURLConnection) new URL(url).openConnection();
             int responseCode = connection.getResponseCode();
             if (responseCode == HttpURLConnection.HTTP_NOT_FOUND) {
-                throw new Exception("Image not found");
+                throw new RuntimeException("Image not found");
             }
             return url;
 
         } catch (IOException e) {
-            throw new Exception("Error connecting to server");
+            throw new RuntimeException("Error connecting to server");
         } finally {
             if (connection != null) {
                 connection.disconnect();

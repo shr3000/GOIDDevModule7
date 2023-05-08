@@ -34,7 +34,7 @@ public class HttpStatusImageDownloader {
             outputStream.close();
 
         } catch (Exception e) {
-            throw new Exception("Error downloading image");
+            throw new RuntimeException("Error downloading image", e);
         } finally {
             if (connection != null) {
                 connection.disconnect();
@@ -43,7 +43,4 @@ public class HttpStatusImageDownloader {
 
     }
 
-    public String getStatusImage(int code) {
-        return null;
-    }
 }

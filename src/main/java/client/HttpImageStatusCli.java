@@ -10,7 +10,6 @@ public class HttpImageStatusCli {
     public HttpImageStatusCli() {
         this.downloader = new HttpStatusImageDownloader();
     }
-
     public void askStatus() {
         Scanner scanner = new Scanner(System.in);
 
